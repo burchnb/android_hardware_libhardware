@@ -90,16 +90,18 @@ typedef uint16_t GpsStatusValue;
 typedef uint16_t GpsLocationFlags;
 /* IMPORTANT: Note that the following values must match
  * constants in GpsLocationProvider.java. */
+/** GpsLocation is invalid. */
+#define GPS_LOCATION_INVALID        0
 /** GpsLocation has valid latitude and longitude. */
-#define GPS_LOCATION_HAS_LAT_LONG   0x0001
+#define GPS_LOCATION_HAS_LAT_LONG   1
 /** GpsLocation has valid altitude. */
-#define GPS_LOCATION_HAS_ALTITUDE   0x0002
+#define GPS_LOCATION_HAS_ALTITUDE   2
 /** GpsLocation has valid speed. */
-#define GPS_LOCATION_HAS_SPEED      0x0004
+#define GPS_LOCATION_HAS_SPEED      4
 /** GpsLocation has valid bearing. */
-#define GPS_LOCATION_HAS_BEARING    0x0008
+#define GPS_LOCATION_HAS_BEARING    8
 /** GpsLocation has valid accuracy. */
-#define GPS_LOCATION_HAS_ACCURACY   0x0010
+#define GPS_LOCATION_HAS_ACCURACY   16
 
 /** Flags for the gps_set_capabilities callback. */
 
@@ -108,21 +110,21 @@ typedef uint16_t GpsLocationFlags;
  * not set, then the framework will use 1000ms for min_interval and will start
  * and call start() and stop() to schedule the GPS.
  */
-#define GPS_CAPABILITY_SCHEDULING       (1 << 0)
+#define GPS_CAPABILITY_SCHEDULING       0x0000001
 /** GPS supports MS-Based AGPS mode */
-#define GPS_CAPABILITY_MSB              (1 << 1)
+#define GPS_CAPABILITY_MSB              0x0000002
 /** GPS supports MS-Assisted AGPS mode */
-#define GPS_CAPABILITY_MSA              (1 << 2)
+#define GPS_CAPABILITY_MSA              0x0000004
 /** GPS supports single-shot fixes */
-#define GPS_CAPABILITY_SINGLE_SHOT      (1 << 3)
+#define GPS_CAPABILITY_SINGLE_SHOT      0x0000008
 /** GPS supports on demand time injection */
-#define GPS_CAPABILITY_ON_DEMAND_TIME   (1 << 4)
+#define GPS_CAPABILITY_ON_DEMAND_TIME   0x0000010
 /** GPS supports Geofencing  */
-#define GPS_CAPABILITY_GEOFENCING       (1 << 5)
+#define GPS_CAPABILITY_GEOFENCING       0x0000020
 /** GPS supports Measurements. */
-#define GPS_CAPABILITY_MEASUREMENTS     (1 << 6)
+#define GPS_CAPABILITY_MEASUREMENTS     0x0000040
 /** GPS supports Navigation Messages */
-#define GPS_CAPABILITY_NAV_MESSAGES     (1 << 7)
+#define GPS_CAPABILITY_NAV_MESSAGES     0x0000080
 
 /**
  * Flags used to specify which aiding data to delete when calling
@@ -147,8 +149,14 @@ typedef uint16_t GpsAidingData;
 
 /** AGPS type */
 typedef uint16_t AGpsType;
+#define AGPS_TYPE_INVALID       -1
+#define AGPS_TYPE_ANY           0
 #define AGPS_TYPE_SUPL          1
 #define AGPS_TYPE_C2K           2
+#define AGPS_TYPE_WWAN_ANY      3
+#define AGPS_TYPE_WIFI          4
+/** SSID length */
+#define SSID_BUF_SIZE (32+1)
 
 typedef uint16_t AGpsSetIDType;
 #define AGPS_SETID_TYPE_NONE    0
