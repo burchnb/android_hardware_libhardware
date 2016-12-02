@@ -578,6 +578,10 @@ typedef struct {
     float   elevation;
     /** Azimuth of SV in degrees. */
     float   azimuth;
+    #if 1
+    /** Placeholder for Samsung ABI compat */
+        int     unknown;
+    #endif
 } GpsSvInfo;
 
 typedef struct {
@@ -619,7 +623,10 @@ typedef struct {
 
     /** Azimuth of SV in degrees. */
     float azimuth;
-
+//#if 1
+    /** Placeholder for Samsung ABI compat */
+    int     unknown;
+//#endif
     /**
      * Contains additional data about the given SV. Value should be one of those
      * GNSS_SV_FLAGS_* constants
@@ -672,6 +679,10 @@ typedef struct {
      * might rely in the old (wrong) behavior.
      */
     uint16_t lac;
+    #if 1
+    /** Placeholder for Samsung ABI compat */
+        int     unknown;
+    #endif
     /** Cell id in 2G. Utran Cell id in 3G. Cell Global Id EUTRA in LTE. */
     uint32_t cid;
     /** Tracking Area Code in LTE. */
